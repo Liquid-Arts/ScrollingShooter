@@ -7,7 +7,7 @@ public class Mover : MonoBehaviour
 	
 	void Start ()
 	{
-		rigidbody.velocity = transform.up * speed;
+		rigidbody2D.velocity = transform.up * speed;
 		
 	}
 	
