@@ -1,5 +1,0 @@
-This test is the second one
-
-This test should clash (fixed)
-
-This is another test
