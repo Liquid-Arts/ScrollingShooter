@@ -8,7 +8,7 @@ public class ShootController : MonoBehaviour {
 	public Transform shotSpawn;
 	public float switchRate = 0.2f;
 
-	private int shotIndex;
+	private int shotIndex = 0;
 	private GameObject currentShot;
 	private float fireRate;
 	private float nextFire = 0f;
@@ -16,14 +16,14 @@ public class ShootController : MonoBehaviour {
 
 	void Awake()
 	{
-		changeShot ();
+		ChangeShot ();
 	}
 	void Update ()
 	{
 		if (Input.GetButton ("Switch") && Time.time > nextSwitch) {
 			nextSwitch = Time.time + switchRate;
 			shotIndex = (shotIndex + 1) % shots.Count;
-			changeShot ();
+			ChangeShot ();
 		}
 
 		if (Input.GetButton("Fire1") && Time.time > nextFire) {
@@ -32,15 +32,15 @@ public class ShootController : MonoBehaviour {
 		}
 	}
 
-	private void changeShot()
+	private void ChangeShot()
 	{
 		currentShot = shots [shotIndex];
 		ShotAttributes shotAttr = currentShot.GetComponent<ShotAttributes> ();
 		fireRate = shotAttr.fireRate;
-		updateShotName (shotAttr.shotName);
+		UpdateShotName (shotAttr.shotName);
 	}
 
-	private void updateShotName(string newShotName)
+	private void UpdateShotName(string newShotName)
 	{
 		shotName.text = newShotName;
 	}

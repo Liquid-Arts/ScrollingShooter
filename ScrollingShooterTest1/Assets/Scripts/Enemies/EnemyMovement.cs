@@ -19,11 +19,17 @@ public class EnemyMovement : MonoBehaviour
 
 	void Update ()
 	{
+		if (player != null) {
+			MoveToPlayer();
+		}
+	}
+
+	private void MoveToPlayer()
+	{
 		enemyToPlayer = player.position - transform.position;
 		enemyToPlayer.z = 0f;
 		enemyToPlayer = enemyToPlayer.normalized;
-
+		
 		enemyRigidBody.velocity = enemyToPlayer * speed;
 	}
-
 }
