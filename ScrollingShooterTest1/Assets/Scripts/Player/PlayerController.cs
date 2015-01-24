@@ -6,11 +6,6 @@ public class PlayerController : MonoBehaviour
 	public float speed;
 	public float xmin, xmax, ymin, ymax;
 
-	public float fireRate;
-	private float nextFire = 0f;
-	public GameObject shot;
-	public Transform shotSpawn;
-
 	Rigidbody2D playerRigidBody;
 	int floorMask;
 	float camRayLength = 600f;
@@ -22,17 +17,6 @@ public class PlayerController : MonoBehaviour
 		playerRigidBody = GetComponent<Rigidbody2D> ();
 	}
 
-
-	
-	void Update ()
-	{
-		if (Input.GetButton("Fire1") && Time.time > nextFire) {
-			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		}
-	}
-
-
 	void FixedUpdate ()
 	{
 		float h = Input.GetAxisRaw("Horizontal");
@@ -41,9 +25,7 @@ public class PlayerController : MonoBehaviour
 		Turning ();
 
 		Move (h, v);
-
 	}
-
 
 	void Move (float h, float v)
 	{
@@ -60,8 +42,7 @@ public class PlayerController : MonoBehaviour
 				-2f
 		);
 	}
-
-
+	
 	void Turning ()
 	{
 		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -73,12 +54,9 @@ public class PlayerController : MonoBehaviour
 			Vector3 playerToMouse = floorHit.point - transform.position;
 			playerToMouse.z = 0f;
 
-
 			float angle = Mathf.Atan2(playerToMouse.y, playerToMouse.x) *Mathf.Rad2Deg - 90f;
 
 			transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
 		}
-
 	}
 }
