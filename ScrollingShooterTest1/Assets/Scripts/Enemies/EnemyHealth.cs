@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour {
 		showHealthSlider (true);
 	}
 
-	void OnCollisionEnter2D (Collision2D col)
+	void OnTriggerEnter2D (Collider2D col)
 	{
 		if (col.gameObject.tag == "Shot") {
 			int damage = col.gameObject.GetComponent<ShotAttributes>().damage;
