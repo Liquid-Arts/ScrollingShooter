@@ -19,6 +19,11 @@ public class EnemyHealth : MonoBehaviour {
 			TakeDamage(damage);
 			Destroy(col.gameObject);
 		}
+
+		if (col.gameObject.tag == "Player") {
+			Destroy(col.gameObject);
+			Destroy(gameObject);
+		}
 	}
 
 	private void TakeDamage(int damage)
