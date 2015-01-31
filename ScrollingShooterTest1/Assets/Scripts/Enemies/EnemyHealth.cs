@@ -7,6 +7,10 @@ public class EnemyHealth : MonoBehaviour {
 	public Slider slider;
 
 	void Awake() {
+		// For spawned instances where the slider can't be set directly
+		if (slider == null) {
+			slider = GameObject.Find ("UICanvas").GetComponentInChildren<Slider> ();
+		}
 		slider.maxValue = health;
 		slider.value = health;
 		showHealthSlider (true);
