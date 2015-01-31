@@ -30,7 +30,7 @@ public class LineFormationBuilder : BaseFormationBuilder {
 		Vector3 currentPosition = startPosition;
 		for (int i = 0; i < lineLength; i++) {
 			positions.Add(currentPosition);
-			currentPosition += (rotation * new Vector3(0, -1, 0));
+			currentPosition += (rotation * new Vector3(0, -separation, 0));
 		}
 
 		return new Formation (spawnObject, positions, rotation, delaySeconds);
