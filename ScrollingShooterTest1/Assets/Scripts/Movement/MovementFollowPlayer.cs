@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyMovement : MonoBehaviour 
+public class MovementFollowPlayer : MonoBehaviour 
 {
 	Transform player;
 	NavMeshAgent nav;

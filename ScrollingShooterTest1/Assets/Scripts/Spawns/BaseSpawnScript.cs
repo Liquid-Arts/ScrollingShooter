@@ -24,6 +24,14 @@ public abstract class BaseSpawnScript : MonoBehaviour {
 		}
 	}
 
+	public void AddFormation(BaseFormationBuilder formationBuilder)
+	{
+		foreach (Spawn spawn in formationBuilder.GetFormation().Spawns)
+		{
+			spawns.Enqueue(spawn);
+		}
+	}
+
 	public Spawn GetNextSpawn() {
 		if (spawns.Count > 0) {
 			return spawns.Dequeue();
