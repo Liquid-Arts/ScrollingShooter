@@ -14,10 +14,12 @@ public class ShootController : MonoBehaviour {
 	private float nextFire = 0f;
 	private float nextSwitch = 0f;
 
+
 	void Awake()
 	{
 		ChangeShot ();
 	}
+
 	void Update ()
 	{
 		if (Input.GetButton ("Switch") && Time.time > nextSwitch) {
