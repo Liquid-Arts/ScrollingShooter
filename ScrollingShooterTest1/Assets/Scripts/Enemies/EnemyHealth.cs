@@ -40,6 +40,10 @@ public class EnemyHealth : MonoBehaviour {
 	}
 
 	private void Die() {
+		int scoreValue = gameObject.GetComponent<EnemyScore> ().scoreValue;
+		GameObject scoreUIText = GameObject.Find("scoreUIText");
+		scoreController scoreScript = (scoreController) scoreUIText.GetComponent(typeof(scoreController)); 
+		scoreScript.UpdateScore (scoreValue);
 		showHealthSlider (false);
 		Destroy (gameObject);
 	}
