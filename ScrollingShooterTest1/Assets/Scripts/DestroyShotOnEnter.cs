@@ -9,4 +9,11 @@ public class DestroyShotOnEnter : MonoBehaviour {
 			Destroy(other.gameObject);
 		}
 	}
+
+	void OnCollisionEnter2D (Collider2D other)
+	{
+		if (other.gameObject.tag == "Player") {
+			Destroy(other.gameObject);
+		}
+	}
 }
