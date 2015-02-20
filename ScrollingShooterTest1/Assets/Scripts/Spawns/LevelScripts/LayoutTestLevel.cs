@@ -44,11 +44,13 @@ public class LayoutTestLevel : BaseSpawnScript  {
 			Time.timeScale=0.0F;
 			isPause=true;
 			pauseText.SetActive(true);
+			player.GetComponent<ShootController>().enabled=false;
 		}
 		else if(Input.GetKeyDown ("escape") && isPause){
 			Time.timeScale=1.0F;
 			isPause=false;
 			pauseText.SetActive(false);
+			player.GetComponent<ShootController>().enabled=true;
 		}
 
 	}
