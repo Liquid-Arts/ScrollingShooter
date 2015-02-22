@@ -24,12 +24,21 @@ public class BasicEnemyHealth : MonoBehaviour {
 	}
 	
 	private void Die() {
-		int scoreValue = gameObject.GetComponent<EnemyScore> ().scoreValue;
-		GameObject scoreUIText = GameObject.Find("scoreUIText");
-		scoreController scoreScript = (scoreController) scoreUIText.GetComponent(typeof(scoreController)); 
-		scoreScript.UpdateScore (scoreValue);
+		UpdateScore ();
 		Destroy (gameObject);
 	}
 
-
+	private void UpdateScore() {
+		EnemyScore enemyScore = gameObject.GetComponent<EnemyScore> ();
+		if (enemyScore != null) {
+			int scoreValue = enemyScore.scoreValue;
+			GameObject scoreUIText = GameObject.Find ("scoreUIText");
+			if (scoreUIText != null) {
+				scoreController scoreScript = (scoreController)scoreUIText.GetComponent (typeof(scoreController)); 
+				if (scoreScript != null) {
+					scoreScript.UpdateScore (scoreValue);
+				}
+			}
+		}
+	}
 }

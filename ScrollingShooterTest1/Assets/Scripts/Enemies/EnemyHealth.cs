@@ -1,19 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyHealth : MonoBehaviour {
 	public int health;
-	public Slider slider;
 
-	void Awake() {
-		// For spawned instances where the slider can't be set directly
-		if (slider == null) {
-			slider = GameObject.Find ("UICanvas").GetComponentInChildren<Slider> ();
+	private EnemyHealthDisplay healthDisplay;
+
+	void Start() {
+		healthDisplay = GetComponent<EnemyHealthDisplay> ();
+		if (healthDisplay != null) {
+			healthDisplay.Setup (health);
 		}
-		slider.maxValue = health;
-		slider.value = health;
-		showHealthSlider (true);
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
@@ -36,20 +35,32 @@ public class EnemyHealth : MonoBehaviour {
 		if (health <= 0) {
 			Die ();
 		}
-		slider.value -= damage;
+		if (healthDisplay != null) {
+			healthDisplay.OnDamageTaken (damage);
+		}
 	}
 
 	private void Die() {
-		int scoreValue = gameObject.GetComponent<EnemyScore> ().scoreValue;
-		GameObject scoreUIText = GameObject.Find("scoreUIText");
-		scoreController scoreScript = (scoreController) scoreUIText.GetComponent(typeof(scoreController)); 
-		scoreScript.UpdateScore (scoreValue);
-		showHealthSlider (false);
+		UpdateScore ();
+
+		if (healthDisplay != null) {
+			healthDisplay.OnDeath ();
+		}
+
 		Destroy (gameObject);
 	}
 
-	private void showHealthSlider(bool show) {
-		float newAlpha = show ? 1f : 0f;
-		slider.GetComponent<CanvasGroup> ().alpha = newAlpha;
+	private void UpdateScore() {
+		EnemyScore enemyScore = gameObject.GetComponent<EnemyScore> ();
+		if (enemyScore != null) {
+			int scoreValue = enemyScore.scoreValue;
+			GameObject scoreUIText = GameObject.Find ("scoreUIText");
+			if (scoreUIText != null) {
+				scoreController scoreScript = (scoreController)scoreUIText.GetComponent (typeof(scoreController)); 
+				if (scoreScript != null) {
+					scoreScript.UpdateScore (scoreValue);
+				}
+			}
+		}
 	}
 }
