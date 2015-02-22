@@ -1,30 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
-<<<<<<< HEAD
-=======
+
 using UnityEngine.UI;
->>>>>>> Layout
+
 
 public class LayoutTestLevel : BaseSpawnScript  {
 
 	public GameObject basicEnemy;
 	public GameObject zigZagEnemy;
 	public GameObject boss;
-<<<<<<< HEAD
-=======
+
 	public GameObject player;
 	public GameObject pauseText;
->>>>>>> Layout
+
 	
 	public Transform top;
 	public Transform left;
 	public Transform right;
 	public Transform bottom;
-<<<<<<< HEAD
-=======
+
 
 	bool isPause = false;
->>>>>>> Layout
+
 	
 	void Start () {
 		AddFormation (new RectFormationBuilder (basicEnemy, left, 1)
@@ -42,8 +39,7 @@ public class LayoutTestLevel : BaseSpawnScript  {
 		              .WithSeparation (1.5));
 		AddSpawn (boss, top, 10);
 	}
-<<<<<<< HEAD
-=======
+
 
 	void Update (){
 
@@ -65,5 +61,5 @@ public class LayoutTestLevel : BaseSpawnScript  {
 		}
 
 	}
->>>>>>> Layout
+
 }
