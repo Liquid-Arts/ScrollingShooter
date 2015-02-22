@@ -1,49 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
-<<<<<<< HEAD
-=======
 using UnityEngine.UI;
->>>>>>> Layout
 
-public class LayoutTestLevel : BaseSpawnScript  {
+public class OfficeTestLevel : BaseSpawnScript  {
 
 	public GameObject basicEnemy;
+	public GameObject paperPlane;
 	public GameObject zigZagEnemy;
 	public GameObject boss;
-<<<<<<< HEAD
-=======
 	public GameObject player;
 	public GameObject pauseText;
->>>>>>> Layout
-	
-	public Transform top;
-	public Transform left;
-	public Transform right;
-	public Transform bottom;
-<<<<<<< HEAD
-=======
+
+	public Transform left1;
+	public Transform left2;
+	public Transform left3;
+	public Transform left4;
+	public Transform left5;
+	public Transform left6;
+	public Transform left7;
+	public Transform right1;
+	public Transform right2;
+	public Transform right3;
+	public Transform right4;
+	public Transform right5;
+	public Transform right6;
+	public Transform right7;
+
 
 	bool isPause = false;
->>>>>>> Layout
 	
 	void Start () {
-		AddFormation (new RectFormationBuilder (basicEnemy, left, 1)
-		              .WithLength (3)
-		              .WithWidth (1)
+		AddFormation (new RectFormationBuilder (paperPlane, left1, 5.2F)
+		              .WithLength (1)
+		              .WithWidth (4)
 		              .WithHorizontalSeparation (1)
 		              .WithVerticalSeparation (2));
-		AddFormation (new RectFormationBuilder (basicEnemy, right, 1)
-		              .WithLength (3)
-		              .WithWidth (1)
+		AddFormation (new RectFormationBuilder (paperPlane, right1, 5)
+		              .WithLength (1)
+		              .WithWidth (5)
 		              .WithHorizontalSeparation (1)
 		              .WithVerticalSeparation (2));
-		AddFormation (new LineFormationBuilder (zigZagEnemy, bottom, 7)
-		              .WithLength (5)
-		              .WithSeparation (1.5));
-		AddSpawn (boss, top, 10);
 	}
-<<<<<<< HEAD
-=======
 
 	void Update (){
 
@@ -65,5 +62,4 @@ public class LayoutTestLevel : BaseSpawnScript  {
 		}
 
 	}
->>>>>>> Layout
 }
